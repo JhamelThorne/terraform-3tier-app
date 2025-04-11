@@ -105,3 +105,13 @@ module "rds" {
  project                = var.project
  publicly_accessible    = true
 }
+
+module "ec2" {
+ source               = "./modules/ec2"
+ ami_id               = "ami-xxxx"
+ instance_type        = "t2.micro"
+ subnet_id            = module.vpc.public_subnet_ids[0]
+ sg_id                = module.security_group.sg_id
+ project              = var.project
+ iam_instance_profile = aws_iam_instance_profile.ec2_ssm_profile.name
+}
