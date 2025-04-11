@@ -92,3 +92,16 @@ resource "aws_route_table_association" "private" {
   subnet_id      = aws_subnet.private[count.index].id
   route_table_id = aws_route_table.private.id
 }
+
+
+module "rds" {
+ source                 = "./modules/rds"
+ instance_class         = "db.t3.micro"
+ db_name                = "appdb"
+ db_username            = data.aws_ssm_parameter.db_username.value
+ db_password            = data.aws_ssm_parameter.db_password.value
+ rds_sg_id              = module.security_group.rds_sg_id
+ private_subnet_ids     = module.vpc.private_subnet_ids
+ project                = var.project
+ publicly_accessible    = true
+}
