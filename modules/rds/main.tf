@@ -8,6 +8,7 @@ resource "aws_db_instance" "this" {
  password             = var.db_password       # use SSM for production
  parameter_group_name = "default.mysql8.0"
  db_subnet_group_name = aws_db_subnet_group.this.name
+ db_username            = data.aws_ssm_parameter.db_username.value
  vpc_security_group_ids = [var.rds_sg_id]
  publicly_accessible  = var.publicly_accessible
  skip_final_snapshot  = true
