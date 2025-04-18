@@ -117,10 +117,18 @@ module "ec2" {
 }
 
 module "security_group" {
- source = "./modules/security_group"
- vpc_id = module.vpc.vpc_id
- project = var.project
-}
+
+  source            = "./modules/security_group"
+
+  vpc_id            = module.vpc.vpc_id
+
+  my_ip             = "98.84.xx.xx/32"  # Replace with your IP
+
+  project           = var.project
+
+  ec2_subnet_cidrs  = module.vpc.public_subnet_cidrs
+
+} 
 
 module "vpc" {
  source = "./modules/vpc"
