@@ -115,3 +115,18 @@ module "ec2" {
  project              = var.project
  iam_instance_profile = aws_iam_instance_profile.ec2_ssm_profile.name
 }
+
+module "security_group" {
+ source = "./modules/security_group"
+ vpc_id = module.vpc.vpc_id
+ project = var.project
+}
+
+module "vpc" {
+ source = "./modules/vpc"
+ vpc_cidr = var.vpc_cidr
+ public_subnet_cidrs = var.public_subnet_cidrs
+ private_subnet_cidrs = var.private_subnet_cidrs
+ availability_zones = var.availability_zones
+ project = var.project
+}
