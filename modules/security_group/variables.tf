@@ -14,10 +14,3 @@ variable "ec2_subnet_cidrs" {
   type        = list(string)
   description = "List of EC2 subnet CIDRs allowed to reach DB"
 } 
-
-variable "vpc_id" {}
-variable "my_ip" {}
-variable "project" {}
-variable "ec2_subnet_cidrs" {
- type = list(string)
-}
