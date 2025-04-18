@@ -99,7 +99,7 @@ module "rds" {
  db_name                = "appdb"
  db_username            = data.aws_ssm_parameter.db_username.value
  db_password            = data.aws_ssm_parameter.db_password.value
- rds_sg_id              = module.security_group.rds_sg_id
+ rds_sg_id              = module.security_group.sg_id
  private_subnet_ids     = module.vpc.private_subnet_ids
  project                = var.project
  publicly_accessible    = true
@@ -119,7 +119,7 @@ module "security_group" {
   vpc_id            = module.vpc.vpc_id
   my_ip             = "52.87.221.92"  # Replace with your IP
   project           = var.project
-  ec2_subnet_cidrs  = module.vpc.public_subnet_cidrs
+  ec2_subnet_cidrs  = var.public_subnet_cidrs
 } 
 module "vpc" {
  source = "./modules/vpc"
