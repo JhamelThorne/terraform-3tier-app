@@ -8,7 +8,7 @@ resource "aws_instance" "my_instance" {
  subnet_id                   = var.subnet_id
  vpc_security_group_ids      = [var.sg_id]
  associate_public_ip_address = true
- iam_instance_profile        = aws_iam_instance_profile.ec2_ssm_profile.name
+ iam_instance_profile = module.ec2.instance_profile_name
  user_data = file("${path.module}/user_data.sh")
  tags = {
    Name = "${var.project}-ec2"
