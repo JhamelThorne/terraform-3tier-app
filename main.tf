@@ -1,4 +1,3 @@
-
 resource "aws_vpc" "main" {
   cidr_block           = var.vpc_cidr
   enable_dns_support   = true
@@ -137,4 +136,11 @@ module "vpc" {
  private_subnet_cidrs = var.private_subnet_cidrs
  availability_zones = var.availability_zones
  project = var.project
+}
+
+data "aws_ssm_parameter" "db_username" {
+ name = "/project2/db_username"
+}
+data "aws_ssm_parameter" "db_password" {
+ name = "/project2/db_password"
 }
