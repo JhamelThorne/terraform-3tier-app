@@ -112,23 +112,15 @@ module "ec2" {
  subnet_id            = module.vpc.public_subnet_ids[0]
  sg_id                = module.security_group.sg_id
  project              = var.project
- iam_instance_profile = aws_iam_instance_profile.ec2_ssm_profile.name
+ iam_instance_profile = module.ec2.ec2_ssm_profile_name
 }
-
 module "security_group" {
-
   source            = "./modules/security_group"
-
   vpc_id            = module.vpc.vpc_id
-
   my_ip             = "98.84.xx.xx/32"  # Replace with your IP
-
   project           = var.project
-
   ec2_subnet_cidrs  = module.vpc.public_subnet_cidrs
-
 } 
-
 module "vpc" {
  source = "./modules/vpc"
  vpc_cidr = var.vpc_cidr
