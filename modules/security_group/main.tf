@@ -1,7 +1,10 @@
+locals {
+  # Check if my_ip already contains a subnet mask, if not add /32
+  my_ip_cidr = length(regexall("/", var.my_ip)) > 0 ? var.my_ip : "${var.my_ip}/32"
+}
+
 resource "aws_security_group" "app_sg" {
-
   name        = "${var.project}-sg"
-
   description = "Allow inbound HTTP, SSH, and DB access"
 
   vpc_id      = var.vpc_id
