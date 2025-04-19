@@ -15,13 +15,13 @@ resource "aws_security_group" "app_sg" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
-  ingress {
-    description = "SSH from your IP"
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = [var.my_ip]
-  }
+ingress {
+  description = "SSH from your IP"
+  from_port   = 22
+  to_port     = 22
+  protocol    = "tcp"
+  cidr_blocks = [local.my_ip_cidr]
+}
   ingress {
     description = "MySQL from EC2 subnet"
     from_port   = 3306
