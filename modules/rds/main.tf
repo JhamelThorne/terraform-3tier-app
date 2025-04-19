@@ -12,3 +12,12 @@ resource "aws_db_instance" "this" {
   publicly_accessible  = var.publicly_accessible
   skip_final_snapshot  = true
 }
+
+resource "aws_db_subnet_group" "this" {
+  name       = "${var.project}-db-subnet-group"
+  subnet_ids = var.private_subnet_ids
+  
+  tags = {
+    Name = "${var.project}-db-subnet-group"
+  }
+}
