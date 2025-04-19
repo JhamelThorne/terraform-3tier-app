@@ -1,3 +1,8 @@
+provider "aws" {
+  region = "us-east-1"  # Replace with your desired AWS region
+  # Credentials will be loaded from environment variables or shared credentials file
+}
+
 resource "aws_vpc" "main" {
   cidr_block           = var.vpc_cidr
   enable_dns_support   = true
