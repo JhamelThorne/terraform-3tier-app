@@ -4,7 +4,8 @@ resource "aws_iam_instance_profile" "ec2_ssm_profile" {
 }
 
 resource "aws_iam_role" "ec2_parameter_store" {
-  name = "ec2-parameter-store"
+  name = "${var.project}-ec2-parameter-store"  # Add project prefix for uniqueness
+  # Rest of the configuration remains the same
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
