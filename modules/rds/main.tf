@@ -14,10 +14,10 @@ resource "aws_db_instance" "this" {
 }
 
 resource "aws_db_subnet_group" "this" {
-  name       = "${var.project}-subnet-group"  # Simplified name
+  name       = "${replace(var.project, "-", "_")}_subnet_group"  # Use underscores instead of hyphens
   subnet_ids = var.private_subnet_ids
   
   tags = {
-    Name = "${var.project}-db-subnet-group"
+    Name = "${var.project}-db-subnet-group"  # Keep the hyphenated name for the tag
   }
 }
