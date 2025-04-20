@@ -13,11 +13,11 @@ resource "aws_db_instance" "this" {
   skip_final_snapshot  = true
 }
 
-resource "aws_db_subnet_group" "three-tier-web-app" {
-  name       = "${replace(var.project, "-", "_")}_subnet_group"  # Use underscores instead of hyphens
+resource "aws_db_subnet_group" "this" {
+  name       = "${replace(var.project, "-", "_")}_subnet_group"
   subnet_ids = var.private_subnet_ids
   
   tags = {
-    Name = "${var.project}-db-subnet-group"  # Keep the hyphenated name for the tag
+    Name = "${var.project}-db-subnet-group"
   }
 }
