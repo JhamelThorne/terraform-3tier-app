@@ -23,3 +23,8 @@ variable "project" {
  description = "Project tag"
  type        = string
 }
+
+variable "private_subnet_id" {
+ type     = string
+ description  ="Private subnet to launch ec2 instance in"
+}
