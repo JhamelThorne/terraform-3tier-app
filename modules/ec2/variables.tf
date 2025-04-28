@@ -24,7 +24,7 @@ variable "project" {
  type        = string
 }
 
-variable "private_subnet_id" {
- type     = string
- description  ="Private subnet to launch ec2 instance in"
+variable "subnet_id" {
+ description = "Subnet ID to launch EC2 instance into (private or public)"
+ type        = string
 }
