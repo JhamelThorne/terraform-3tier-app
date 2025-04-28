@@ -1,4 +1,3 @@
-# terraform-3tier-app
 # 3-Tier AWS Web Application Deployment (Terraform)
 ## Project Overview
 This project provisions a production-grade 3-Tier Web Application infrastructure on AWS using Terraform Cloud. It features a secure, scalable, and modular environment spanning networking, compute, and database services.
