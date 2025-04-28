@@ -111,13 +111,13 @@ module "rds" {
 }
 
 module "ec2" {
- source               = "./modules/ec2"
- ami_id               = "ami-xxxx"
- instance_type        = "t2.micro"
- private_subnet_id    = module.vpc.private_subnet_ids[0]
- sg_id                = module.security_group.sg_id
- project              = var.project
- iam_instance_profile = module.ec2.ec2_ssm_profile_name
+ source                = "./modules/ec2"
+ ami_id                = var.ami_id
+ instance_type         = var.instance_type
+ subnet_id             = module.vpc.private_subnet_ids[0]   # <-- NOTE: subnet_id, not private_subnet_id
+ sg_id                 = module.security_group.sg_id
+ project               = var.project
+ iam_instance_profile  = module.ec2.ec2_ssm_profile_name
 }
 module "security_group" {
   source            = "./modules/security_group"
