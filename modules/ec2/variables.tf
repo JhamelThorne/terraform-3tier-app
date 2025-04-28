@@ -12,7 +12,7 @@ variable "instance_type" {
  type        = string
 }
 variable "subnet_id" {
- description = "Subnet ID for EC2 instance"
+ description = "Subnet ID to launch EC2 instance into (private or public subnet)"
  type        = string
 }
 variable "sg_id" {
@@ -21,10 +21,5 @@ variable "sg_id" {
 }
 variable "project" {
  description = "Project tag"
- type        = string
-}
-
-variable "subnet_id" {
- description = "Subnet ID to launch EC2 instance into (private or public)"
  type        = string
 }
