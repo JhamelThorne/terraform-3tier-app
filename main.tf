@@ -114,7 +114,7 @@ module "ec2" {
  source               = "./modules/ec2"
  ami_id               = "ami-xxxx"
  instance_type        = "t2.micro"
- subnet_id            = module.vpc.private_subnet_ids
+ private_subnet_id    = module.vpc.private_subnet_ids[0]
  sg_id                = module.security_group.sg_id
  project              = var.project
  iam_instance_profile = module.ec2.ec2_ssm_profile_name
